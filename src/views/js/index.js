@@ -41,15 +41,25 @@ const socket = io();
 // })
 
 const circle = document.querySelector("#circle");
-const drag = (e) =>{
-    const {clientX} = e;
-    const {clientY} = e;
-    circle.style.top= clientY+"px";
-    circle.style.left= clientX+"px";
-}
-circle.addEventListener("mousedown", (evento)=>{
-    document.addEventListener("mousemove", drag);
+const drawCircle = (data) => {
+  circle.style.top = data.top;
+  circle.style.left = data.left;
+};
+const drag = (e) => {
+  const { clientX } = e;
+  const { clientY } = e;
+  const posicion = { top: clientY + "px", left: clientX + "px" }
+  drawCircle(posicion);
+  socket.emit("circleposition", posicion);
+  // circle.style.top= clientY+"px";
+  // circle.style.left= clientX+"px";
+};
+circle.addEventListener("mousedown", (evento) => {
+  document.addEventListener("mousemove", drag);
 });
-document.addEventListener("mouseup", ()=>{
-    document.removeEventListener("mousemove", drag);
+document.addEventListener("mouseup", () => {
+  document.removeEventListener("mousemove", drag);
+});
+socket.on("movercirculo", (data) => {
+  drawCircle(data);
 });

@@ -35,8 +35,10 @@ io.on("connection", (socket)=>{
     //     const lastSocket = socketsOnline[socketsOnline.length-1];
     //     io.to(lastSocket).emit("salute", data);
     // });
-    
-    
+    socket.on("circleposition", data=>{
+        socket.broadcast.emit("movercirculo", data);
+    });
+
 });
 
 httpServer.listen(3000);

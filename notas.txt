@@ -1,0 +1,3 @@
+npm i express socket.io --save
+
+npm i bufferutil utf-8-validate -D

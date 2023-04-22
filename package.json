@@ -1,0 +1,19 @@
+{
+  "name": "webstoke",
+  "version": "1.0.0",
+  "description": "Mi websocket",
+  "main": "src/index.js",
+  "scripts": {
+   "dev":"nodemon src/index.js"
+  },
+  "author": "Pablo Santillana",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.6.1"
+  },
+  "devDependencies": {
+    "bufferutil": "^4.0.7",
+    "utf-8-validate": "^5.0.10"
+  }
+}

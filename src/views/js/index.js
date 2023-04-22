@@ -19,14 +19,37 @@ const socket = io();
 //     console.log("No pude conectarme", socket.io);
 // });
 
-socket.on("welcome", (data)=>{
-    document.querySelector(".text").textContent=data;
-});
+// socket.on("welcome", (data)=>{
+//     document.querySelector(".text").textContent=data;
+// });
 
-const mandarAlserver = document.querySelector(".boton");
-mandarAlserver.addEventListener("click", ()=>{
-    socket.emit("mandar", "hola servidor");
+// const mandarAlserver = document.querySelector(".boton");
+// mandarAlserver.addEventListener("click", ()=>{
+//     socket.emit("mandar", "hola servidor");
+// });
+// socket.on("todos", (data)=>{
+//     console.log(data);
+// });
+
+// const saludarUltimo = document.querySelector(".saludar-al-ultimo");
+// saludarUltimo.addEventListener("click", ()=>{
+//     socket.emit("last", "Hola");
+// });
+
+// socket.on("salute", (data)=>{
+//     console.log(data);
+// })
+
+const circle = document.querySelector("#circle");
+const drag = (e) =>{
+    const {clientX} = e;
+    const {clientY} = e;
+    circle.style.top= clientY+"px";
+    circle.style.left= clientX+"px";
+}
+circle.addEventListener("mousedown", (evento)=>{
+    document.addEventListener("mousemove", drag);
 });
-socket.on("todos", (data)=>{
-    console.log(data);
+document.addEventListener("mouseup", ()=>{
+    document.removeEventListener("mousemove", drag);
 });
